@@ -13,24 +13,26 @@ public class Task04 {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println("The equation is given: ?? + ?? = 44");
+        Scanner iScanner = new Scanner(System.in);
 
+        System.out.println("The equation is given: ");
+        String equation = iScanner.nextLine();
+        String message = "No solution";
+        boolean flag = true;
 
+        for (int i = 0; (i < 10) && flag; i++) {
+            String result = equation.replace("?", Integer.toString(i));
+            System.out.println(result);
 
-        int count = 0;
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (20 + i + 20 + j == 44) {
-                    count += 1;
-                    System.out.println(count + ") 2" + i + " + " + "2" + j  + " = 44");
-                }
+            String [] arr = result.split(" ");
+
+            if (Integer.parseInt(arr[0]) + Integer.parseInt(arr[2]) == Integer.parseInt(arr[4])){
+                message = result;
+                flag = false;
             }
         }
-        System.out.println("\n");
-        if (count == 0) {
-            System.out.println("No solution\n");
-        }
+        System.out.println(message);
+        iScanner.close();
 
     }
     }
